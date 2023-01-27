@@ -13,7 +13,7 @@ app.use(cookieSession({
 }))
 app.use(passport.session())
 
-app.get('/',(req,res)=>{
+app.get('/home',(req,res)=>{
     res.send('hello this is the homepage')
 })
 // app.get('/success',(req,res)=>{
