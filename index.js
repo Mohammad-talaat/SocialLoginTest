@@ -8,6 +8,7 @@ const passport = require('passport')
 const googleRoutes = require('./social_login/google/googleRoutes')
 
 app.use(cors())
+app.use(express.json())
 app.use(passport.initialize())
 app.use(cookieSession({
     name:'loginSession',
