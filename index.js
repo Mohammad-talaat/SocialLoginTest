@@ -37,7 +37,7 @@ if(!req.user)
 res.redirect('/failed');
 res.send("Welcome " + req.user.email);
 });
- 
+
 // failure
 app.get('/google/callback/failure' , (req , res) => {
 res.send("Error");
