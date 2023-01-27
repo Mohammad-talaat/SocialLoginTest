@@ -12,6 +12,9 @@ app.use(cookieSession({
 }))
 app.use(passport.session())
 
+app.get('/',(req,res)=>{
+    res.send('hello this is the homepage')
+})
 // app.get('/success',(req,res)=>{
 //     res.send('successfull google authenticaion')
 // })
