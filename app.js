@@ -1,10 +1,11 @@
 require("dotenv").config();
 const express = require('express');
+const cors = require('cors')
 const app = express()
 const passport = require('passport')
 const cookieSession = require('cookie-session')
 require('./social_login/passportSetup')
-
+app.use(cors())
 app.use(passport.initialize())
 app.use(cookieSession({
     name:'loginSession',
