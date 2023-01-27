@@ -1,0 +1,10 @@
+node_modules/
+public
+.vscode/
+/dist
+/logs
+/npm-debug.log
+todo.txt
+todoProject.txt
+/uploads
+.env
