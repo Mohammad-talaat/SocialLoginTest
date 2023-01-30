@@ -6,7 +6,7 @@ const cookieSession = require('cookie-session')
 const app = express()
 const passport = require('passport')
 const googleRoutes = require('./social_login/google/googleRoutes')
-
+const facbookRoutes = require('./social_login/facebook/facebookRoutes')
 app.use(cors())
 app.use(express.json())
 app.use(passport.initialize())
@@ -21,6 +21,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/google',googleRoutes)
+app.use('/facebook',facbookRoutes)
 
 app.listen(process.env.PORT,()=>{
     console.log(`server is running on port: ${process.env.PORT}`)

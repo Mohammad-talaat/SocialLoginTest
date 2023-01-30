@@ -1,21 +1,21 @@
 const express = require('express')
-const router = express.Router()
 const passport = require('passport')
-require('./googleSetup')
+const router = express.Router()
 
-router.get('/',passport.authenticate('google',{scope:['profile','email']}))
+require('./facebookSetup')
 
-router.get('/callback',
-passport.authenticate( 'google', {
-successRedirect: '/google/callback/success',
-failureRedirect: '/google/callback/failure'
+router.get('/',passport.authenticate('facebook',{scope:['profile','email']}))
+
+router.get('/callback',passport.authenticate( 'facebook', {
+successRedirect: '/facebook/callback/success',
+failureRedirect: '/facebook/callback/failure'
 }))
-
 router.get('/callback/success' , (req , res) => {
     if(!req.user)
+    console.log(req)
     res.redirect('/callback/failure');
 
-    res.send("Welcome " + req.user.email);
+    res.send("Welcome " + req.user.email );
     });
 
 router.get('/callback/failure' , (req , res) => {
