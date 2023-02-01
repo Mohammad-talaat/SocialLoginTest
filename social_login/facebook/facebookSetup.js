@@ -1,5 +1,5 @@
 const passport = require('passport')
-const facebookStrategy = require('passport-facebook').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 
 passport.serializeUser((user , done) => {
     done(null , user);
@@ -7,7 +7,7 @@ passport.serializeUser((user , done) => {
 passport.deserializeUser(function(user, done) {
     done(null, user);
     });
-passport.use(new facebookStrategy({
+passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: process.env.FACEBOOK_CALL_BACK_URL,
