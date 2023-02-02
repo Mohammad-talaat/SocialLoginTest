@@ -23,7 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/',(req,res)=>{
-    res.send('hello this is the homepage')
+    res.send('hi this is the homepage')
 })
 
 app.use('/google',googleRoutes)
