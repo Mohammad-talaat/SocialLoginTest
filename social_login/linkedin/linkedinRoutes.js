@@ -47,12 +47,12 @@ router.get('/callback',passport.authenticate( 'linkedin', {
                 const photo = req.user.photos[0].value;
                 const email = req.user.emails[0].value;
                 res.send(
-                  `<center style="font-size:140%"> <p>User is Logged In </p>
-                  <p>Name: ${name} ${family} </p>
-                  <p> Linkedn Email: ${email} </p>
-                  <img src="${photo}"/>
-                  </center>
-                  `)
+                        `<center style="font-size:140%"> <p>User is Logged In </p>
+                        <p>Name: ${name} ${family} </p>
+                        <p> Linkedn Email: ${email} </p>
+                        <img src="${photo}"/>
+                        </center>
+                        `)
         });
 
 

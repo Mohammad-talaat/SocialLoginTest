@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors')
 // const cookieSession = require('cookie-session')
 const session = require('express-session')
-
+const morgan = require('morgan')
 
 const app = express()
 const passport = require('passport')
@@ -13,6 +13,8 @@ const linkedInRouters = require('./social_login/linkedin/linkedinRoutes')
 
 app.use(cors())
 app.use(express.json())
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms')
+)
 
 app.use(session({
     secret: process.env.SESSION_SECERT,
