@@ -60,15 +60,8 @@ router.get('/callback/failure' , (req , res) => {
     res.send("Error");
     })
 
-router.get('/logout',(req,res)=>{
-    req.session = null;
-    console.log('--------request--------')
-    console.log(req.session)
-    console.log('--------request--------')
+router.post('/logout',(req,res)=>{
     req.logout();
-    console.log('--------request--------')
-    console.log(req.session)
-    console.log('--------request--------')
     res.redirect('/')
 })
 
