@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const { googleLoginSuccess } = require('./googleController')
 require('./googleSetup')
 
 router.get('/',passport.authenticate('google',{scope:['profile','email']}))
@@ -11,12 +12,7 @@ successRedirect: '/google/callback/success',
 failureRedirect: '/google/callback/failure'
 }))
 
-router.get('/callback/success' , (req , res) => {
-    if(!req.user)
-    res.redirect('/callback/failure');
-
-    res.send("Welcome " + req.user.email);
-    });
+router.get('/callback/success' , googleLoginSuccess);
 
 router.get('/callback/failure' , (req , res) => {
     res.send("Error");
