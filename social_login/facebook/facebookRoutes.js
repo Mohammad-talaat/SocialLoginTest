@@ -4,17 +4,17 @@ const router = express.Router()
 
 require('./facebookSetup')
 
-router.get('/',passport.authenticate('facebook',{scope:['profile','email']}))
+router.get('/',passport.authenticate('facebook'))
 
 router.get('/callback',passport.authenticate( 'facebook', {
-successRedirect: '/callback/success',
-failureRedirect: '/callback/failure'
+successRedirect: '/facebook/callback/success',
+failureRedirect: '/facebook/callback/failure'
 }))
 router.get('/callback/success' , (req , res) => {
     if(!req.user)
     res.redirect('/callback/failure');
     // console.log(req)
-    res.send("Welcome " + req.user.email );
+    res.send("Welcome " + req.user );
     });
 
 router.get('/callback/failure' , (req , res) => {
