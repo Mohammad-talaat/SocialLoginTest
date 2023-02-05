@@ -7,6 +7,7 @@ const twitterLoginSuccess = async (req,res)=>{
         const user = req.user._json
 
         res.send(`
+        <br>${user.entities.description[0]}<br>
         Welcome ${user.name} <br>
         with email ${user.email} <br>
         with picture <br> <img src='${user.profile_image_url_https}'></img> <br>
