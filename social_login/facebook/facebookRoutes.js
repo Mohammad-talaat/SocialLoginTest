@@ -1,37 +1,25 @@
 const express = require('express')
 const passport = require('passport')
+const { facebookLoginSuccess } = require('./facebookController')
 const router = express.Router()
 
 require('./facebookSetup')
 
-router.get('/',passport.authenticate('facebook',{scope:['profile','email']}))
+router.get('/',passport.authenticate('facebook'))
 
 router.get('/callback',passport.authenticate( 'facebook', {
 successRedirect: '/facebook/callback/success',
 failureRedirect: '/facebook/callback/failure'
 }))
-router.get('/callback/success' , (req , res) => {
-    if(!req.user)
-    console.log(req)
-    res.redirect('/callback/failure');
+router.get('/callback/success' , facebookLoginSuccess);
 
-    res.send("Welcome " + req.user.email );
-    });
 
 router.get('/callback/failure' , (req , res) => {
     res.send("Error");
     })
 
-router.get('/logout',(req,res)=>{
-    req.session = null;
-    console.log('--------request--------')
-    console.log(req.session)
-    console.log('--------request--------')
+router.post('/logout',(req,res)=>{
     req.logout();
-    console.log('--------request--------')
-    console.log(req.session)
-    console.log('--------request--------')
     res.redirect('/')
 })
-
 module.exports = router
