@@ -9,7 +9,8 @@ const app = express()
 const passport = require('passport')
 const googleRoutes = require('./social_login/google/googleRoutes')
 const facbookRoutes = require('./social_login/facebook/facebookRoutes')
-const linkedInRouters = require('./social_login/linkedin/linkedinRoutes')
+const linkedInRoutes = require('./social_login/linkedin/linkedinRoutes')
+const twitterRoutes = require('./social_login/twitter/twitterRoutes')
 
 app.use(cors())
 app.use(express.json())
@@ -30,7 +31,8 @@ app.get('/',(req,res)=>{
 
 app.use('/google',googleRoutes)
 app.use('/facebook',facbookRoutes)
-app.use('/linkedIn',linkedInRouters)
+app.use('/linkedIn',linkedInRoutes)
+app.use('/twitter',twitterRoutes)
 app.get('/deleteUserData',(req,res)=>{
     res.send('user Data is deleted')
 })
