@@ -7,7 +7,9 @@ passport.use(new TwitterStrategy({
     callbackURL: process.env.TWITTER_CALL_BACK_URL
   },
   function(token, tokenSecret, profile, done) {
+    console.log('-----------------fadf---------')
     console.log(token,tokenSecret, profile)
+    console.log('-----------------fadf---------')
     return done(null,profile);
   }
 ));
