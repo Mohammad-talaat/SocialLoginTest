@@ -17,7 +17,7 @@ app.use(passport.session())
 // })
 // app.get('/failed',(req,res)=>{
 //     res.send('failed google authentication')
-// })
+// }) 
 app.get('/google',passport.authenticate('google',{scope:['profile','email']}))
 
 // Auth Callback
