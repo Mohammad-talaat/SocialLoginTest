@@ -7,7 +7,9 @@ const router = express.Router();
 require('./twitterSetup')
 
 
-router.get('/',passport.authenticate('twitter'))
+router.get('/',passport.authenticate('twitter',{
+    scope: ['tweet.read', 'users.read', 'offline.access']
+}))
 
 router.get('/oauth/callback',
 passport.authenticate( 'twitter', {

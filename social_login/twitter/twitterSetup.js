@@ -1,16 +1,18 @@
 const passport = require('passport')
-const TwitterStrategy = require('passport-twitter').Strategy
+const TwitterStrategy = require('@superfaceai/passport-twitter-oauth2').Strategy
 
 passport.use(new TwitterStrategy({
-    consumerKey: process.env.TWITTER_CONSUMER_KEY,
-    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: process.env.TWITTER_CALL_BACK_URL
-  },
-  function(token, tokenSecret, profile, done) {
+  clientID: process.env.TWITTER_CLIENT_ID,
+  clientSecret: process.env.TWITTER_CLIENT_SECRET,
+  clientType: 'confidential',
+  callbackURL: process.env.TWITTER_CALL_BACK_URL,
+ 
+},
+  function(accessToken, refreshToken,email, profile, done) {
     console.log('-----------------fadf---------')
-    console.log(token,tokenSecret, profile)
+    console.log(accessToken,refreshToken, profile,email)
     console.log('-----------------fadf---------')
-    return done(null,profile);
+    return done(null,profile,email);
   }
 ));
 
