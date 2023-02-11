@@ -4,7 +4,12 @@ const TwitterStrategy = require('passport-twitter').Strategy
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: process.env.TWITTER_CALL_BACK_URL
+    callbackURL: process.env.TWITTER_CALL_BACK_URL,
+    includeEmail:true,
+    includeEntities:true,
+    includeStatus:true,
+    skipExtendedUserProfile:false
+
   },
   function(token, tokenSecret, profile, done) {
     console.log('-----------------fadf---------')
